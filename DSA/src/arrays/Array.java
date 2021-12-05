@@ -100,7 +100,7 @@ public class Array {
 		Array array = new Array(2);
 		array.insert(1);
 		array.insert(2);
-		array.insertAt(4, 2);
+		array.insertAt(4, 1);
 		//array.removeAt(0);
 		//array.reverse();
 		//System.out.println(array.max());
