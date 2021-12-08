@@ -114,6 +114,43 @@ public class LinkedList {
 		head = previous;
 	}
 	
+	
+	//kth node from the end
+	public int kthFromEnd(int k) {
+		if(this.isListEmpty()) throw new IllegalStateException("List is empty.");
+		if(k<0 || k>size) throw new IllegalStateException("k is not in between the list size.");
+		
+		Node a = head;
+		Node b = head;
+		
+		//place second pointer at the right distance
+		for(int i=0;i<k-1;i++) {
+			b = b.getNextNode();
+		}
+		
+		//move both pointers
+		while(b!=this.tail) {
+			a = a.getNextNode();
+			b = b.getNextNode();
+		}
+		
+		return a.getCurrentNodeValue();
+	}
+
+	
+	//print middle element
+	public void printMiddleElement() {
+		if(this.isListEmpty()) throw new IllegalArgumentException("");
+		Node first = head;
+		Node second = head;
+		while(second.getNextNode()!=null && second.getNextNode().getNextNode()!=null) {
+			first = first.getNextNode();
+			second = second.getNextNode().getNextNode();
+		}
+		System.out.println("Middle: "+first.getCurrentNodeValue());
+	}
+	
+	
 	/*
 	 * Utils
 	 * */
@@ -151,10 +188,12 @@ public class LinkedList {
 		list.deleteLast();
 		list.addLast(6);
 		list.addLast(7);
-		list.addFirst(8);
+		//list.addFirst(8);
 		list.print();
-		list.reverse();
-		list.print();
+		list.printMiddleElement();
+		//list.reverse();
+		//list.print();
+		//System.out.println(list.kthFromEnd(3));
 		//System.out.println(list.size());
 		//System.out.println(Arrays.toString(list.toArray()));
 		//System.out.println(list.contains(1));
