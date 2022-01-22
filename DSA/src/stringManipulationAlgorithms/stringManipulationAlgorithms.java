@@ -71,6 +71,14 @@ public class stringManipulationAlgorithms {
 		return finalString.toString();
 	}
 	
+	public static String reverseWordOrder(String string) {
+		if(string==null) throw new IllegalArgumentException("Please enter a valid string.");
+		String[] splitString = string.split(" ");
+		StringBuilder reversedString = new StringBuilder();
+		for(int i=splitString.length-1;i>=0;i--) reversedString.append(splitString[i]+" ");
+		return reversedString.toString().trim();
+	}
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -82,9 +90,14 @@ public class stringManipulationAlgorithms {
 //		System.out.println(stringManipulationAlgorithms.countVowels("Aeiou"));
 		
 		//testing reverseString
-		System.out.println(stringManipulationAlgorithms.reverseString1("Hello"));
-		System.out.println(stringManipulationAlgorithms.reverseString2("Hello"));
-		System.out.println(stringManipulationAlgorithms.reverseString3("Hello"));
+//		System.out.println(stringManipulationAlgorithms.reverseString1("Hello"));
+//		System.out.println(stringManipulationAlgorithms.reverseString2("Hello"));
+//		System.out.println(stringManipulationAlgorithms.reverseString3("Hello"));
+		
+		//testing reverseWordOrder
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder("Hello"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder("Trees are beautiful"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder("It's snow outisde in our yard"));
 	}
 
 }
