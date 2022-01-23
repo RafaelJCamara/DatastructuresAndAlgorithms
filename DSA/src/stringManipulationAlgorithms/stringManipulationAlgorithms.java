@@ -1,5 +1,7 @@
 package stringManipulationAlgorithms;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -71,12 +73,20 @@ public class stringManipulationAlgorithms {
 		return finalString.toString();
 	}
 	
-	public static String reverseWordOrder(String string) {
+	public static String reverseWordOrder1(String string) {
 		if(string==null) throw new IllegalArgumentException("Please enter a valid string.");
-		String[] splitString = string.split(" ");
+		String[] splitString = string.trim().split(" ");
 		StringBuilder reversedString = new StringBuilder();
 		for(int i=splitString.length-1;i>=0;i--) reversedString.append(splitString[i]+" ");
 		return reversedString.toString().trim();
+	}
+	
+	public static String reverseWordOrder2(String string) {
+		if(string==null) throw new IllegalArgumentException("Please enter a valid string.");
+		String[] splitString = string.trim().split(" ");
+		//reverse splitString array (reverse in-place)
+		Collections.reverse(Arrays.asList(splitString));
+		return String.join(" ", splitString);
 	}
 	
 	private static boolean isVowel(char character) {
@@ -95,9 +105,12 @@ public class stringManipulationAlgorithms {
 //		System.out.println(stringManipulationAlgorithms.reverseString3("Hello"));
 		
 		//testing reverseWordOrder
-		System.out.println(stringManipulationAlgorithms.reverseWordOrder("Hello"));
-		System.out.println(stringManipulationAlgorithms.reverseWordOrder("Trees are beautiful"));
-		System.out.println(stringManipulationAlgorithms.reverseWordOrder("It's snow outisde in our yard"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder1("Hello"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder1("Trees are beautiful"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder1("It's snow outisde in our yard"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder2("Hello"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder2("Trees are beautiful"));
+		System.out.println(stringManipulationAlgorithms.reverseWordOrder2("It's snow outisde in our yard"));
 	}
 
 }
