@@ -89,6 +89,11 @@ public class stringManipulationAlgorithms {
 		return String.join(" ", splitString);
 	}
 	
+	public static boolean isWordRotation(String s1, String s2) {
+		if(s1==null||s2==null) throw new IllegalArgumentException("Please provide valid strings.");
+		return (s1.length()==s2.length()) && ((s1+s1).contains(s2));
+	}
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -105,12 +110,19 @@ public class stringManipulationAlgorithms {
 //		System.out.println(stringManipulationAlgorithms.reverseString3("Hello"));
 		
 		//testing reverseWordOrder
+		/*
 		System.out.println(stringManipulationAlgorithms.reverseWordOrder1("Hello"));
 		System.out.println(stringManipulationAlgorithms.reverseWordOrder1("Trees are beautiful"));
 		System.out.println(stringManipulationAlgorithms.reverseWordOrder1("It's snow outisde in our yard"));
 		System.out.println(stringManipulationAlgorithms.reverseWordOrder2("Hello"));
 		System.out.println(stringManipulationAlgorithms.reverseWordOrder2("Trees are beautiful"));
 		System.out.println(stringManipulationAlgorithms.reverseWordOrder2("It's snow outisde in our yard"));
+		*/
+		
+		//testing isWordRotation
+		System.out.println(stringManipulationAlgorithms.isWordRotation("Hello","R"));
+		System.out.println(stringManipulationAlgorithms.isWordRotation("Abba","baAb"));
+		System.out.println(stringManipulationAlgorithms.isWordRotation("Car","rCa"));
 	}
 
 }
