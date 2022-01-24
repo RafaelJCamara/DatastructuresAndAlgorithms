@@ -8,11 +8,11 @@ import java.util.Stack;
 
 public class stringManipulationAlgorithms {
 	
+	/*
+	 * Time complexity: O(n)
+	 * Space complexity: O(1)
+	 * */
 	public static int countVowels(String string) {
-		/*
-		 * Time complexity: O(n)
-		 * Space complexity: O(1)
-		 * */
 		if(string==null) return 0;
 		int num = 0;
 		string = string.toLowerCase();
@@ -24,12 +24,11 @@ public class stringManipulationAlgorithms {
 		return num;
 	}
 	
+	/*
+	 * Time complexity: O(n)
+	 * Space complexity: O(n)
+	 * */
 	public static String reverseString1(String string) {
-		/*
-		 * Time complexity: O(n)
-		 * Space complexity: O(n)
-		 * */
-		
 		if(string==null) throw new IllegalArgumentException("Please enter a valid string.");
 		String finalString = "";
 		Stack<Character> invertedString = new Stack<Character>();
@@ -45,11 +44,11 @@ public class stringManipulationAlgorithms {
 		return finalString;
 	}
 	
+	/*
+	 * Time complexity: O(n^2)
+	 * Space complexity: O(1)
+	 * */
 	public static String reverseString2(String string) {
-		/*
-		 * Time complexity: O(n^2)
-		 * Space complexity: O(1)
-		 * */
 		 
 		if(string==null) throw new IllegalArgumentException("Please enter a valid string.");
 		String finalString = "";
@@ -59,12 +58,11 @@ public class stringManipulationAlgorithms {
 		return finalString;
 	}
 	
-	public static String reverseString3(String string) {
-		/*
-		 * Time complexity: O(n)
-		 * Space complexity: O(1)
-		 * */
-		 
+	/*
+	 * Time complexity: O(n)
+	 * Space complexity: O(1)
+	 * */
+	public static String reverseString3(String string) {	 
 		if(string==null) throw new IllegalArgumentException("Please enter a valid string.");
 		StringBuilder finalString = new StringBuilder();
 		for(int i=string.length()-1;i>=0;i--) {
@@ -94,6 +92,41 @@ public class stringManipulationAlgorithms {
 		return (s1.length()==s2.length()) && ((s1+s1).contains(s2));
 	}
 	
+	//this algorithm will preserve the original ordering
+	/*
+	 * Time Complexity: O(n)
+	 * Space Complexity: O(n)
+	 */
+	public static String removeDuplicates(String string) {
+		if(string==null) throw new IllegalArgumentException("Please provide a valid string.");
+		StringBuilder noDuplicateString = new StringBuilder();
+		Set<Character> visitedCharacters = new HashSet<Character>();
+		for(char c : string.toCharArray()) {
+			if(!visitedCharacters.contains(c)) {
+				visitedCharacters.add(c);
+				noDuplicateString.append(c);
+			}
+		}
+		return noDuplicateString.toString();
+	}
+	
+	//this algorithm will not preserve the original ordering
+	/*
+	 * Time Complexity: O(n) [can be worse depending on the sort algorithm complexity]
+	 * Space Complexity: O(1) [can be worse depending on the sort algorithm complexity]
+	 */
+	public static String removeDuplicates2(String string) {
+		if(string==null) throw new IllegalArgumentException("Please provide a valid string.");
+		StringBuilder noDuplicateString = new StringBuilder();
+		char[] stringToChar = string.toCharArray();
+		Arrays.sort(stringToChar);
+		noDuplicateString.append(stringToChar[0]);
+		for(int i=1;i!=stringToChar.length;i++) {
+			if(stringToChar[i]!=stringToChar[i-1]) noDuplicateString.append(stringToChar[i]);
+		}
+		return noDuplicateString.toString();
+	}
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -120,9 +153,19 @@ public class stringManipulationAlgorithms {
 		*/
 		
 		//testing isWordRotation
+		/*
 		System.out.println(stringManipulationAlgorithms.isWordRotation("Hello","R"));
 		System.out.println(stringManipulationAlgorithms.isWordRotation("Abba","baAb"));
 		System.out.println(stringManipulationAlgorithms.isWordRotation("Car","rCa"));
+		*/
+		
+		//testing removeDuplicates
+		System.out.println(stringManipulationAlgorithms.removeDuplicates("Helloooooooo!!!!"));
+		System.out.println(stringManipulationAlgorithms.removeDuplicates("Abbaasdasds"));
+		System.out.println(stringManipulationAlgorithms.removeDuplicates("Caraaaaaa"));
+		System.out.println(stringManipulationAlgorithms.removeDuplicates2("Helloooooooo!!!!"));
+		System.out.println(stringManipulationAlgorithms.removeDuplicates2("Abbaasdasds"));
+		System.out.println(stringManipulationAlgorithms.removeDuplicates2("Caraaaaaa"));
 	}
 
 }
