@@ -2,7 +2,11 @@ package stringManipulationAlgorithms;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.Stack;
 
@@ -127,6 +131,26 @@ public class stringManipulationAlgorithms {
 		return noDuplicateString.toString();
 	}
 	
+	public static char mostRepeatedCharacter(String string) {
+		if(string==null) throw new IllegalArgumentException("Please provide a valid string.");
+		Map<Character,Integer> characterCount = new HashMap<>();
+		for(char c : string.toCharArray()) {
+			characterCount.put(c, characterCount.getOrDefault(c, 0)+1);
+		}
+		
+		int max = 0;
+		char maxChar = ' ';
+		
+		for(Map.Entry<Character, Integer> entry: characterCount.entrySet()) {
+			 if(entry.getValue()>max) {
+				 maxChar=entry.getKey();
+				 max = entry.getValue();
+			 }
+		}
+		
+		return maxChar;
+	}
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -160,12 +184,19 @@ public class stringManipulationAlgorithms {
 		*/
 		
 		//testing removeDuplicates
+		/*
 		System.out.println(stringManipulationAlgorithms.removeDuplicates("Helloooooooo!!!!"));
 		System.out.println(stringManipulationAlgorithms.removeDuplicates("Abbaasdasds"));
 		System.out.println(stringManipulationAlgorithms.removeDuplicates("Caraaaaaa"));
 		System.out.println(stringManipulationAlgorithms.removeDuplicates2("Helloooooooo!!!!"));
 		System.out.println(stringManipulationAlgorithms.removeDuplicates2("Abbaasdasds"));
 		System.out.println(stringManipulationAlgorithms.removeDuplicates2("Caraaaaaa"));
+		*/
+		
+		//testing mostRepeatedCharacter
+		System.out.println(stringManipulationAlgorithms.mostRepeatedCharacter("Helloooooooo!!!!"));
+		System.out.println(stringManipulationAlgorithms.mostRepeatedCharacter("Abbaasdasdsddddd"));
+		System.out.println(stringManipulationAlgorithms.mostRepeatedCharacter("Caraaaaaa"));
 	}
 
 }
