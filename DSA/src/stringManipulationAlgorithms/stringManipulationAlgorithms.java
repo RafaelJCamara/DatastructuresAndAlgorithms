@@ -151,6 +151,16 @@ public class stringManipulationAlgorithms {
 		return maxChar;
 	}
 	
+	public static String capitalizeFirstLetter(String string) {
+		if(string==null || string.isBlank()) throw new IllegalArgumentException("Please provide a valid string.");
+		StringBuilder finalString = new StringBuilder();
+		String[] splitString = string.trim().split("\\s+");
+		for(String s:splitString) {
+			finalString.append(s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase()+" ");
+		}
+		return finalString.toString().trim();
+	}
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -194,9 +204,18 @@ public class stringManipulationAlgorithms {
 		*/
 		
 		//testing mostRepeatedCharacter
+		/*
 		System.out.println(stringManipulationAlgorithms.mostRepeatedCharacter("Helloooooooo!!!!"));
 		System.out.println(stringManipulationAlgorithms.mostRepeatedCharacter("Abbaasdasdsddddd"));
 		System.out.println(stringManipulationAlgorithms.mostRepeatedCharacter("Caraaaaaa"));
+		*/
+		
+		
+		//testing mostRepeatedCharacter
+		System.out.println(stringManipulationAlgorithms.capitalizeFirstLetter(" hello again"));
+		System.out.println(stringManipulationAlgorithms.capitalizeFirstLetter("hello     again"));
+		System.out.println(stringManipulationAlgorithms.capitalizeFirstLetter(" hello          again     a"));
+		
 	}
 
 }
