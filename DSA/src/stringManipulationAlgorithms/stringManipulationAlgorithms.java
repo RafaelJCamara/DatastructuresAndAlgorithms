@@ -161,6 +161,42 @@ public class stringManipulationAlgorithms {
 		return finalString.toString().trim();
 	}
 	
+	//solution using array sorting
+	/*
+	 * Time Complexity: O(nlog(n))
+	 * Space Complexity: O(n)
+	 */
+	public static boolean isAnagram(String s1, String s2) {
+		if(s1==null || s2==null || s1.length()!=s2.length()) return false;
+		char[] sortedS1Array = s1.toLowerCase().toCharArray();
+		Arrays.sort(sortedS1Array);
+		char[] sortedS2Array = s2.toLowerCase().toCharArray();
+		Arrays.sort(sortedS2Array);
+		return Arrays.equals(sortedS1Array, sortedS2Array);
+	}
+	
+	//solution using histogramming
+	/*
+	 * Time Complexity: O(n)
+	 * Space Complexity: O(1)
+	 */
+	public static boolean isAnagram2(String s1, String s2) {
+		if(s1==null || s2==null || s1.length()!=s2.length()) return false;
+		final int ENGLISH_ALPHABET = 26;
+		int[] frequencies = new int[ENGLISH_ALPHABET];
+		s1 = s1.toLowerCase();
+		for(int i=0;i!=s1.length();i++) {
+			frequencies[s1.charAt(i)-'a']++;
+		}
+		s2=s2.toLowerCase();
+		for(int i=0;i!=s2.length();i++) {
+			int index = s2.charAt(i)-'a';
+			if(frequencies[index]==0) return false;
+			frequencies[index]--;
+		}
+		return true;
+	}
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -211,11 +247,23 @@ public class stringManipulationAlgorithms {
 		*/
 		
 		
-		//testing mostRepeatedCharacter
+		//testing capitalizeFirstLetter
+		/*
 		System.out.println(stringManipulationAlgorithms.capitalizeFirstLetter(" hello again"));
 		System.out.println(stringManipulationAlgorithms.capitalizeFirstLetter("hello     again"));
 		System.out.println(stringManipulationAlgorithms.capitalizeFirstLetter(" hello          again     a"));
+		*/
 		
+		//testing isAnagram
+		
+		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","adbc"));
+		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","cadb"));
+		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","abce"));
+		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","aa"));
+		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","adbc"));
+		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","cadb"));
+		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","abce"));
+		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","aa"));
 	}
 
 }
