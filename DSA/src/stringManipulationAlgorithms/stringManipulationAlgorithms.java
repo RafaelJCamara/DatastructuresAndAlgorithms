@@ -197,6 +197,17 @@ public class stringManipulationAlgorithms {
 		return true;
 	}
 	
+	
+	public static boolean isPalindrome(String string) {
+		if(string==null) return false;
+		int i=0,j=string.length()-1;
+		while(i<j) {
+			if(string.charAt(i++)!=string.charAt(j--)) return false;
+		}
+		return true;
+	}
+	
+	
 	private static boolean isVowel(char character) {
 		return character=='a' || character=='e' || character=='i' || character=='o' || character=='u';
 	}
@@ -255,7 +266,7 @@ public class stringManipulationAlgorithms {
 		*/
 		
 		//testing isAnagram
-		
+		/*
 		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","adbc"));
 		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","cadb"));
 		System.out.println(stringManipulationAlgorithms.isAnagram("abcd","abce"));
@@ -264,6 +275,13 @@ public class stringManipulationAlgorithms {
 		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","cadb"));
 		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","abce"));
 		System.out.println(stringManipulationAlgorithms.isAnagram2("abcd","aa"));
+		*/
+		
+		//testing isPalindrome
+		System.out.println(stringManipulationAlgorithms.isPalindrome("abcd"));
+		System.out.println(stringManipulationAlgorithms.isPalindrome("racecar"));
+		System.out.println(stringManipulationAlgorithms.isPalindrome("abba"));
+		System.out.println(stringManipulationAlgorithms.isPalindrome("commercial"));
 	}
 
 }
