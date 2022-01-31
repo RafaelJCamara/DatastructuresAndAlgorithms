@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class BinarySearch {
 
 	public static int binarySearchRecursive(int[] array, int target) {
+		//sort the original array
+		Arrays.sort(array);
 		return binarySearchRecursive(array,target,0,array.length-1);
 	}
 	
 	private static int binarySearchRecursive(int[] array, int target, int low, int high) {
-		//sort the original array
-		Arrays.sort(array);
 		if(high<low) return -1;
 		int middle = (low+high)/2;
 		if(array[middle]==target) return middle;
@@ -20,6 +20,8 @@ public class BinarySearch {
 	}
 	
 	public static int binarySearchIterative(int[] array, int target) {
+		//sort the original array
+		Arrays.sort(array);
 		int low = 0;
 		int high = array.length -1;
 		while(high>=low) {
