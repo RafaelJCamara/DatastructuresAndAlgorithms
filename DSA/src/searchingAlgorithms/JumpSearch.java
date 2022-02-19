@@ -26,7 +26,7 @@ public class JumpSearch {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(JumpSearch.jumpSearch(new int[] {1,2,3,4,5,6,7,8,9,10}, 1));
+		System.out.println(JumpSearch.jumpSearch(new int[] {}, 1));
 		System.out.println(JumpSearch.jumpSearch(new int[] {1,2,3,4,5,6,7,8,9,10}, 2));
 		System.out.println(JumpSearch.jumpSearch(new int[] {1,2,3,4,5,6,7,8,9,10}, 5));
 		System.out.println(JumpSearch.jumpSearch(new int[] {1,2,3,4,5,6,7,8,9,10}, 6));
