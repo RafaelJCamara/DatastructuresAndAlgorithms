@@ -4,20 +4,19 @@ import java.util.Arrays;
 
 public class ExponentialSearch {
 
-	public static int search(int[] array, int target) {		
-		
+	public static int search(int[] array, int target) {
 		if(array.length==0) return -1;
 		
+		int lower_bound = 1;
 		int higher_bound = 1;
 	
 		//find the right range
-		while( higher_bound<array.length && array[higher_bound]<target) {
+		while(higher_bound<array.length-1 && array[higher_bound]<target) {
+			lower_bound = higher_bound;
 			higher_bound = higher_bound * 2;
+			if(higher_bound>=array.length) higher_bound = array.length - 1;
 		}
 		
-		int lower_bound = higher_bound/2;
-		higher_bound = Math.min(higher_bound, array.length-1);
-
 		//binary search in such range
 		return binarySearchRecursive(array, target, lower_bound, higher_bound);
 	}
